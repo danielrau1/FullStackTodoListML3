@@ -1,0 +1,14 @@
+<p>
+  todos works!
+</p>
+
+<!--[2]-->
+<app-add-item></app-add-item>
+
+<!--[1.1d]-->
+<div *ngIf="todos">
+  <p *ngFor = "let todo of todos">{{todo.id}})
+  {{todo.title}}<br>
+   completed: {{todo.completed}}</p>
+
+</div>

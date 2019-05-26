@@ -1,0 +1,13 @@
+<p>
+  add-item works!
+</p>
+
+
+
+<!--[2.1a]-->
+                          <!--[2.1b-->
+<form class="form"   (ngSubmit)="onAdd()">
+  <input type="text" name="title" [(ngModel)]="title" placeholder="Add todo..." >
+  <input type="submit" value="submit" class="btn" >
+  {{title}}
+</form>
