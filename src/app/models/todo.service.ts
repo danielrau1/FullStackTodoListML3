@@ -17,7 +17,7 @@ export class TodoService {
   constructor(private http: HttpClient ) { }
    url = 'http://localhost/PHPMVCTodoListML/'; // [1.1b]
 
-  // [2.1d]
+  // [2.1d], [3.1b]
   httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded'
@@ -38,6 +38,13 @@ export class TodoService {
    // this.router.navigate(this.url + 'Pages/addTodo/' + title);
     const body = `title=${title}&completed=${completed}`;
     return this.http.post(this.url + 'Pages/addTodo' , body, this.httpOptions);
+  }
+
+
+  // [3.1b]
+  deleteTodo(id: number): Observable<any> {
+    const body = `id=${id}`;
+    return this.http.post(this.url + 'Pages/deleteTodo' , body, this.httpOptions);
   }
 
 }

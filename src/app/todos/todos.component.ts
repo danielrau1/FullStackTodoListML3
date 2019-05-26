@@ -24,4 +24,11 @@ export class TodosComponent implements OnInit {
 
   }
 
+     // [3.1a]
+    onDelete(id) {
+ // console.log(id);
+        this.todoService.deleteTodo(id).subscribe(res => console.log(res));
+
+    }
+
 }

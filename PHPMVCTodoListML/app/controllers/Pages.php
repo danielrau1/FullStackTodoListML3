@@ -33,6 +33,12 @@ class Pages extends Controller
         echo json_encode($this->todoModel->addTodo($title, $completed));
     }
 
+    // [3.2b]
+    public function deleteTodo(){
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $id = trim($_POST['id']);
 
+        echo json_encode($this->todoModel->deleteTodo($id));
+    }
 
 }
