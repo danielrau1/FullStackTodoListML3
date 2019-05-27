@@ -35,10 +35,25 @@ class Todo
 
 
 
-    // [3.2b]
+   // [3.2b]
     public function deleteTodo($id){
         $this->db->query( 'DELETE FROM todos WHERE id=:id');
         $this->db->bind(':id',$id);
+
+        //Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // [4.2b]
+    public function editTodo($id,$title){
+        $this->db->query( 'UPDATE todos SET title=:title WHERE id=:id');
+        $this->db->bind(':id',$id);
+        $this->db->bind(':title',$title);
+
 
         //Execute
         if($this->db->execute()){

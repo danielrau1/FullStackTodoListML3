@@ -6,6 +6,8 @@ import {Observable} from 'rxjs';
 import {Todo} from './todo';
 import {map} from 'rxjs/operators'; // [1.1b]
 
+import {Router} from '@angular/router'; // [4.1b]
+
 
 
 
@@ -13,11 +15,11 @@ import {map} from 'rxjs/operators'; // [1.1b]
   providedIn: 'root'
 })
 export class TodoService {
-
-  constructor(private http: HttpClient ) { }
+                                              // [4.1b]
+  constructor(private http: HttpClient, private router: Router ) { }
    url = 'http://localhost/PHPMVCTodoListML/'; // [1.1b]
 
-  // [2.1d], [3.1b]
+  // [2.1d], [3.1b], [4.1b]
   httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded'
@@ -47,5 +49,21 @@ export class TodoService {
     return this.http.post(this.url + 'Pages/deleteTodo' , body, this.httpOptions);
   }
 
+
+// [4.1b]
+  sendToEdit(todo) {
+    // console.log(id);
+    this.router.navigate(['/edit', todo.id, todo.title]);
+  }
+
+
+
+  // [4.1e]
+  editTodo(id: number, title: string): Observable<any> {
+
+    console.log(id + ' ' + title);
+    const body = `id=${id}&title=${title}`;
+    return this.http.post(this.url + 'Pages/editTodo', body, this.httpOptions);
+  }
 }
 
